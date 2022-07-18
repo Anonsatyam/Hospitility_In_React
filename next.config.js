@@ -1,12 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  strictMode: true,
   swcMinify: true,
-}
+};
 
-module.exports = { 
+module.exports = {
   images: {
-  domains: ['bayut-production.s3.eu-central-1.amazonaws.com','images.unsplash.com'],
+    domains: [
+      "bayut-production.s3.eu-central-1.amazonaws.com",
+      "images.unsplash.com",
+    ],
   },
-  nextConfig
-}
+  nextConfig,
+};
