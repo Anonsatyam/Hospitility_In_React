@@ -24,7 +24,7 @@ const Property = ({
   <Link href={`/property/${externalID}`} passHref>
     <Flex
       flexWrap="wrap"
-      w="450px"
+      w="420px"
       p="5"
       justifyContent="flex-start"
       cursor="pointer"
@@ -41,12 +41,19 @@ const Property = ({
       <Box w="full">
         <Flex paddingTop="2" alignItems="center" justifyContent="space-between">
           <Flex alignItems="center">
-            <Box paddingRight="3">{isVerified && <GoVerified />}</Box>
+            <Box paddingRight="3" color="green.400">{isVerified && <GoVerified />}</Box>
             <Text fontWeight="bold" fontSize="lg">
               AED {millify(price)}
               {rentFrequency && `/${rentFrequency}`}
             </Text>
           </Flex>
+          <Box>
+            <Avatar size="sm" src={agency?.logo?.url} />
+          </Box>
+        </Flex>
+        <Flex alignItems="center" p="1" width="250px" justifyContent="space-between" color="blue.400">
+          {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill/>
+          <p>{console.log(rooms)}</p>
         </Flex>
       </Box>
     </Flex>
