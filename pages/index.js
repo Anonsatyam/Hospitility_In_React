@@ -34,7 +34,6 @@ const Banner = ({
 );
 
 export default function Home({ propertyForRent, propertyForSale }) {
-  console.log(propertyForRent, propertyForSale);
   return (
     <Box>
       <Banner
@@ -47,9 +46,11 @@ export default function Home({ propertyForRent, propertyForSale }) {
         linkName="/search?purpose=for-rent"
         imageUrl="https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1513&q=80"
       />
+      <Flex flexWrap="wrap">
       {propertyForRent.map((property) => (
-        <Property property={property} key={property.id} />
-      ))}
+              <Property property={property} key={property.id} />
+            ))}
+      </Flex>
 
       <Banner
         purpose="BUY A HOME"
@@ -63,18 +64,20 @@ export default function Home({ propertyForRent, propertyForSale }) {
 
         // imageUrl='https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODZ8fGhvbWV8ZW58MHx8MHx8&auto=format&fit=crop&w=1513&q=60 '
       />
-      {propertyForSale.map((property) => (
-        <Property property={property} key={property.id} />
-      ))}
+      <Flex flexWrap="wrap">
+            {propertyForSale.map((property) => (
+              <Property property={property} key={property.id} />
+            ))}
+      </Flex>
     </Box>
   );
 }
 export async function getStaticProps() {
   const propertyForRent = await fetchApi(
-    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=5`
+    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`
   );
   const propertyForSale = await fetchApi(
-    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=5`
+    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`
   );
 
   return {
