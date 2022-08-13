@@ -53,7 +53,6 @@ const Property = ({
         </Flex>
         <Flex alignItems="center" p="1" width="250px" justifyContent="space-between" color="blue.400">
           {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill/>
-          <p>{console.log(rooms)}</p>
         </Flex>
       </Box>
     </Flex>
