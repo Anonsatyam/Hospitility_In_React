@@ -54,6 +54,9 @@ const Property = ({
         <Flex alignItems="center" p="1" width="250px" justifyContent="space-between" color="blue.400">
           {rooms} <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill/>
         </Flex>
+        <Text fontSize='lg'>
+          {title.length > 30 ? title.substring(0, 30) + '...' : title}
+        </Text>
       </Box>
     </Flex>
   </Link>

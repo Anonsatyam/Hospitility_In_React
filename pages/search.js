@@ -9,7 +9,7 @@ import NoResults from "../assets/images/NoResults.png"
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 
 const Search = ({properties}) => {
-    const [searchFilter, setSearchFilter] = useState(false);
+    const [searchFilters, setSearchFilters] = useState(false);
     const router = useRouter();
     return(
         <Box>
@@ -23,11 +23,11 @@ const Search = ({properties}) => {
             fontSize="lg"
             justifyContent="center"
             alignItems="center"
-            onClick={() => setSearchFilter((previousFilters) => !previousFilters)}>
+            onClick={() => setSearchFilters(!searchFilters)}>
                 <Text>Search</Text>
                 <Icon paddingLeft="2" w="7" as={BsFilter}/>
             </Flex>
-            {searchFilter && <SearchFilters />}
+            {searchFilters && <SearchFilters />}
             <Text fontSize="2xl" p="4" fontWeight="bold">
                 Properties {router.query.purpose}
             </Text>
@@ -45,7 +45,7 @@ const Search = ({properties}) => {
 
 export default Search;
 
-export async function getServerSideProps(query) {
+export async function getServerSideProps({query}) {
     const purpose = query.purpose || 'for-rent';
     const rentFrequency = query.rentFrequency || 'yearly';
     const minPrice = query.minPrice || '0';
